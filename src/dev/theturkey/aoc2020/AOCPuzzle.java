@@ -10,6 +10,8 @@ import java.util.List;
 
 public abstract class AOCPuzzle
 {
+	private long timerStart;
+
 	public AOCPuzzle(String day)
 	{
 		File file = new File("res/day" + day + ".txt");
@@ -43,9 +45,17 @@ public abstract class AOCPuzzle
 			e.printStackTrace();
 		}
 
+		timerStart = System.nanoTime();
 		solve(inputLines);
+		lap();
 	}
 
 	abstract void solve(List<String> input);
+
+	public void lap()
+	{
+		System.out.println("Duration: " + ((System.nanoTime() - timerStart) / 1000) + "µs");
+		timerStart = System.nanoTime();
+	}
 
 }
