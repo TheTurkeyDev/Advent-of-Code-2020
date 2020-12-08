@@ -7,7 +7,8 @@ import java.util.Map;
 
 public class Day7 extends AOCPuzzle
 {
-	private static Map<String, List<BagInfo>> bags = new HashMap<>();
+	private Map<String, List<BagInfo>> bags;
+	private Map<String, Boolean> bagCache;
 
 	public Day7()
 	{
@@ -17,6 +18,8 @@ public class Day7 extends AOCPuzzle
 	@Override
 	public void solve(List<String> input)
 	{
+		bags = new HashMap<>();
+		bagCache = new HashMap<>();
 		for(String s : input)
 		{
 			String[] split1 = s.substring(0, s.length() - 1).split("bags contain");
@@ -49,16 +52,21 @@ public class Day7 extends AOCPuzzle
 			}
 		}
 		System.out.println("Part 1: " + count);
+		lap();
 		System.out.println("Part 2: " + (countBagsInGoldBag("shiny gold") - 1));
 
 	}
 
 	private boolean isGoldBagInBag(String bag)
 	{
+		if(bagCache.containsKey(bag))
+			return bagCache.get(bag);
+
 		for(BagInfo subBag : bags.get(bag))
 		{
 			if(subBag.bagName.equalsIgnoreCase("shiny gold"))
 			{
+				bagCache.put(bag, true);
 				return true;
 			}
 		}
@@ -67,10 +75,12 @@ public class Day7 extends AOCPuzzle
 		{
 			if(isGoldBagInBag(subBag.bagName))
 			{
+				bagCache.put(bag, true);
 				return true;
 			}
 		}
 
+		bagCache.put(bag, false);
 		return false;
 	}
 
@@ -79,9 +89,8 @@ public class Day7 extends AOCPuzzle
 		List<BagInfo> bagList = bags.get(bag);
 		int count = 1;
 		for(BagInfo bagInfo : bagList)
-		{
 			count += (bagInfo.quantity * countBagsInGoldBag(bagInfo.bagName));
-		}
+
 		return count;
 	}
 
