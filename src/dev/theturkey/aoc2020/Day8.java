@@ -15,7 +15,7 @@ public class Day8 extends AOCPuzzle
 	public void solve(List<String> input)
 	{
 		Result res = runProgram(input);
-		System.out.println("Part 1: " + res.acc);
+		System.out.print("Part 1: " + res.acc + ", ");
 		lap();
 
 		int index = 0;
@@ -58,7 +58,7 @@ public class Day8 extends AOCPuzzle
 			index++;
 		} while(run && index < input.size());
 
-		System.out.println("Part 2: " + res2.acc);
+		System.out.print("Part 2: " + res2.acc + ", ");
 	}
 
 	public Result runProgram(List<String> input)

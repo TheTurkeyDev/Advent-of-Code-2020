@@ -42,7 +42,8 @@ public class Day7 extends AOCPuzzle
 
 			bags.put(outterBag, bagInfos);
 		}
-
+		System.out.print("Bags Parsed, ");
+		lap();
 		int count = 0;
 		for(String bag : bags.keySet())
 		{
@@ -51,9 +52,9 @@ public class Day7 extends AOCPuzzle
 				count++;
 			}
 		}
-		System.out.println("Part 1: " + count);
+		System.out.print("Part 1: " + count + ", ");
 		lap();
-		System.out.println("Part 2: " + (countBagsInGoldBag("shiny gold") - 1));
+		System.out.print("Part 2: " + (countBagsInGoldBag("shiny gold") - 1) + ", ");
 
 	}
 
