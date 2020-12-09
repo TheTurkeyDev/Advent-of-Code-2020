@@ -54,7 +54,11 @@ public abstract class AOCPuzzle
 
 	public void lap()
 	{
-		System.out.println("Duration: " + ((System.nanoTime() - timerStart) / 1000) + "µs");
+		long timeSpent = (System.nanoTime() - timerStart) / 1000;
+		if(timeSpent < 1000)
+			System.out.println("Duration: " + timeSpent + "µs");
+		else
+			System.out.println("Duration: " + (timeSpent / 1000.0) + "ms");
 		timerStart = System.nanoTime();
 	}
 
