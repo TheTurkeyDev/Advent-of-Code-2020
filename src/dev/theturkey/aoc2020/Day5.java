@@ -13,7 +13,6 @@ public class Day5 extends AOCPuzzle
 	@Override
 	void solve(List<String> input)
 	{
-		//input = Collections.singletonList("FBFBBFFRLR");
 		int max = 0;
 		List<Integer> ids = new ArrayList<>();
 		for(String s : input)
@@ -38,7 +37,7 @@ public class Day5 extends AOCPuzzle
 				max = rowCol;
 		}
 
-		System.out.println("Part 1:" + max);
+		lap(max);
 
 		int lastID = -1;
 		ids.sort(Integer::compareTo);
@@ -46,7 +45,7 @@ public class Day5 extends AOCPuzzle
 		{
 			if(lastID != -1 && i - lastID == 2)
 			{
-				System.out.println("Part 2: " + (i - 1));
+				lap(i - 1);
 				break;
 			}
 			lastID = i;

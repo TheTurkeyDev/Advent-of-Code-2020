@@ -37,7 +37,7 @@ public class Day2 extends AOCPuzzle
 			}
 		}
 
-		System.out.println("Part 1 Correct: " + correct);
+		lap(correct);
 
 		/* PART 2*/
 		correct = 0;
@@ -55,6 +55,6 @@ public class Day2 extends AOCPuzzle
 			}
 		}
 
-		System.out.println("Part 2 Correct: " + correct);
+		lap(correct);
 	}
 }

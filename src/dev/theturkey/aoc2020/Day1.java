@@ -10,17 +10,18 @@ public class Day1 extends AOCPuzzle
 	}
 
 	@Override
-	void solve(List<String> input)
+	void solve(List<String> inputStrs)
 	{
+		List<Integer> inputs = convertToInts(inputStrs);
 		boolean complete = false;
-		for(int i = 0; i < input.size(); i++)
+		for(int i = 0; i < inputs.size(); i++)
 		{
 			if(complete)
 				break;
-			for(int j = i + 1; j < input.size(); j++)
+			for(int j = i + 1; j < inputs.size(); j++)
 			{
-				Integer int1 = Integer.parseInt(input.get(i));
-				Integer int2 = Integer.parseInt(input.get(j));
+				int int1 = inputs.get(i);
+				int int2 = inputs.get(j);
 				if(int1 + int2 == 2020)
 				{
 					lap(int1 * int2);
@@ -30,15 +31,15 @@ public class Day1 extends AOCPuzzle
 			}
 		}
 
-		for(int i = 0; i < input.size(); i++)
+		for(int i = 0; i < inputs.size(); i++)
 		{
-			for(int j = i + 1; j < input.size(); j++)
+			for(int j = i + 1; j < inputs.size(); j++)
 			{
-				for(int k = j + 1; k < input.size(); k++)
+				for(int k = j + 1; k < inputs.size(); k++)
 				{
-					Integer int1 = Integer.parseInt(input.get(i));
-					Integer int2 = Integer.parseInt(input.get(j));
-					Integer int3 = Integer.parseInt(input.get(k));
+					int int1 = inputs.get(i);
+					int int2 = inputs.get(j);
+					int int3 = inputs.get(k);
 					if(int1 + int2 + int3 == 2020)
 					{
 						lap(int1 * int2 * int3);
