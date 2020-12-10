@@ -12,20 +12,21 @@ public class Day9 extends AOCPuzzle
 	}
 
 	@Override
-	public void solve(List<String> input)
+	public void solve(List<String> inputStrs)
 	{
-		int badNum = 0;
+		List<Long> input = convertToLongs(inputStrs);
+		long badNum = 0;
 		int badNumIndex = 0;
 
-		List<Integer> prev25 = new ArrayList<>();
+		List<Long> prev25 = new ArrayList<>();
 		for(int index = 0; index < 25; index++)
 		{
-			prev25.add(Integer.parseInt(input.get(index)));
+			prev25.add(input.get(index));
 		}
 
 		for(int i = 25; i < input.size(); i++)
 		{
-			int num = Integer.parseInt(input.get(i));
+			long num = input.get(i);
 			boolean found = false;
 			for(int j = 0; j < prev25.size(); j++)
 			{
@@ -33,8 +34,8 @@ public class Day9 extends AOCPuzzle
 					break;
 				for(int k = j + 1; k < prev25.size(); k++)
 				{
-					int prev1 = prev25.get(j);
-					int prev2 = prev25.get(k);
+					long prev1 = prev25.get(j);
+					long prev2 = prev25.get(k);
 					if(prev1 + prev2 == num)
 					{
 						found = true;
@@ -52,8 +53,7 @@ public class Day9 extends AOCPuzzle
 			{
 				badNum = num;
 				badNumIndex = i;
-				System.out.print("Part 1: " + badNum + ", ");
-				lap();
+				lap(badNum);
 				break;
 			}
 		}
@@ -66,12 +66,12 @@ public class Day9 extends AOCPuzzle
 				break;
 			for(int j = i + 1; j < badNumIndex; j++)
 			{
-				int sum = 0;
-				int smallest = Integer.MAX_VALUE;
-				int largest = Integer.MIN_VALUE;
+				long sum = 0;
+				long smallest = Integer.MAX_VALUE;
+				long largest = Integer.MIN_VALUE;
 				for(int k = i; k <= j; k++)
 				{
-					int num = Integer.parseInt(input.get(k));
+					long num = input.get(k);
 					sum += num;
 					if(num < smallest)
 						smallest = num;
@@ -82,7 +82,7 @@ public class Day9 extends AOCPuzzle
 				if(sum == badNum)
 				{
 					found = true;
-					System.out.print("Part 2: " + (smallest + largest) + ", ");
+					lap(smallest + largest);
 					break;
 				}
 			}

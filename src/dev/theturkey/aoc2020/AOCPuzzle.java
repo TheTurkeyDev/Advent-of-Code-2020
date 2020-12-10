@@ -69,4 +69,9 @@ public abstract class AOCPuzzle
 		return input.stream().mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
 	}
 
+	public List<Long> convertToLongs(List<String> input)
+	{
+		return input.stream().mapToLong(Long::parseLong).boxed().collect(Collectors.toList());
+	}
+
 }
