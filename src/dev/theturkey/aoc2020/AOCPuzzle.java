@@ -7,9 +7,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class AOCPuzzle
 {
+	private int part = 1;
 	private long timerStart;
 
 	public AOCPuzzle(String day)
@@ -47,19 +49,24 @@ public abstract class AOCPuzzle
 
 		timerStart = System.nanoTime();
 		solve(inputLines);
-		lap();
 	}
 
 	abstract void solve(List<String> input);
 
-	public void lap()
+	public void lap(long answer)
 	{
 		long timeSpent = (System.nanoTime() - timerStart) / 1000;
 		if(timeSpent < 1000)
-			System.out.println("Duration: " + timeSpent + "µs");
+			System.out.println("Part " + part + ": " + answer + ", Duration: " + timeSpent + "µs");
 		else
-			System.out.println("Duration: " + (timeSpent / 1000.0) + "ms");
+			System.out.println("Part " + part + ": " + answer + ", Duration: " + (timeSpent / 1000.0) + "ms");
 		timerStart = System.nanoTime();
+		part++;
+	}
+
+	public List<Integer> convertToInts(List<String> input)
+	{
+		return input.stream().mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
 	}
 
 }
