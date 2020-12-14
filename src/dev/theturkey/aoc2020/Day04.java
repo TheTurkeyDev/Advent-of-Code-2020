@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day4 extends AOCPuzzle
+public class Day04 extends AOCPuzzle
 {
-	public Day4()
+	public Day04()
 	{
 		super("4");
 	}

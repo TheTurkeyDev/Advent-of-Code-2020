@@ -2,9 +2,9 @@ package dev.theturkey.aoc2020;
 
 import java.util.List;
 
-public class Day2 extends AOCPuzzle
+public class Day02 extends AOCPuzzle
 {
-	public Day2()
+	public Day02()
 	{
 		super("2");
 	}

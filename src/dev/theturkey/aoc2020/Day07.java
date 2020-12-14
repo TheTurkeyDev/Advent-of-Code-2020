@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day7 extends AOCPuzzle
+public class Day07 extends AOCPuzzle
 {
 	private Map<String, List<BagInfo>> bags;
 	private Map<String, Boolean> bagCache;
 
-	public Day7()
+	public Day07()
 	{
 		super("7");
 	}
