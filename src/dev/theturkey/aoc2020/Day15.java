@@ -1,6 +1,5 @@
 package dev.theturkey.aoc2020;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,43 +15,44 @@ public class Day15 extends AOCPuzzle
 	public void solve(List<String> inputStrs)
 	{
 		String[] numStrings = inputStrs.get(0).split(",");
-		List<Integer> spoken = new ArrayList<>();
+		int index = 0;
 		Map<Integer, Integer> seenLast = new HashMap<>();
 		int last = -1;
 		for(int i = 0; i < numStrings.length; i++)
 		{
 			int num = Integer.parseInt(numStrings[i]);
-			spoken.add(num);
+			index++;
 			if(i == numStrings.length - 1)
 			{
 				last = num;
 			}
 			else
 			{
-				seenLast.put(num, spoken.size());
+				seenLast.put(num, index);
 			}
 		}
 
-		while(spoken.size() < 2020)
+		while(index < 2020)
 		{
-			last = step(last, spoken, seenLast);
+			last = step(last, index, seenLast);
+			index++;
 		}
 
 		lap(last);
 
-		while(spoken.size() < 30000000)
+		while(index < 30000000)
 		{
-			last = step(last, spoken, seenLast);
+			last = step(last, index, seenLast);
+			index++;
 		}
 
 		lap(last);
 	}
 
-	public int step(int lastSpoken, List<Integer> spoken, Map<Integer, Integer> seenLast)
+	public int step(int lastSpoken, int index, Map<Integer, Integer> seenLast)
 	{
 		int seenLastTemp = seenLast.getOrDefault(lastSpoken, -1);
-		seenLast.put(lastSpoken, spoken.size());
-		spoken.add(lastSpoken);
-		return seenLastTemp == -1 ? 0 : ((spoken.size() - 1) - seenLastTemp);
+		seenLast.put(lastSpoken, index);
+		return seenLastTemp == -1 ? 0 : (index - seenLastTemp);
 	}
 }

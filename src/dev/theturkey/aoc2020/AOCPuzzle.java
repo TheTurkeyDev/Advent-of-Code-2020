@@ -58,8 +58,10 @@ public abstract class AOCPuzzle
 		long timeSpent = (System.nanoTime() - timerStart) / 1000;
 		if(timeSpent < 1000)
 			System.out.println("Part " + part + ": " + answer + ", Duration: " + timeSpent + "µs");
-		else
+		else if(timeSpent < 1000000)
 			System.out.println("Part " + part + ": " + answer + ", Duration: " + (timeSpent / 1000.0) + "ms");
+		else
+			System.out.println("Part " + part + ": " + answer + ", Duration: " + (timeSpent / 1000000.0) + "s");
 		timerStart = System.nanoTime();
 		part++;
 	}
