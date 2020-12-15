@@ -61,24 +61,28 @@ public class Day14 extends AOCPuzzle
 			}
 			else
 			{
-				List<String> address = new ArrayList<>();
+				List<char[]> address = new ArrayList<>();
 				int index = Integer.parseInt(parts[0].substring(4, parts[0].length() - 2));
-				address.add(String.format("%36s", Integer.toBinaryString(index)).replace(" ", "0"));
+				address.add(String.format("%36s", Integer.toBinaryString(index)).replace(" ", "0").toCharArray());
 
 				long number = Integer.parseInt(parts[1].trim());
 				for(int i = 0; i < bitMask.length; i++)
 				{
 					for(int j = address.size() - 1; j >= 0; j--)
 					{
-						String addressEdit = address.remove(j);
+						char[] addressEdit = address.remove(j);
 						if(bitMask[i] == 'X')
 						{
-							address.add(addressEdit.substring(0, i) + '0' + addressEdit.substring(i + 1));
-							address.add(addressEdit.substring(0, i) + '1' + addressEdit.substring(i + 1));
+							addressEdit[i] = '0';
+							address.add(addressEdit);
+							char[] clone = addressEdit.clone();
+							clone[i] = '1';
+							address.add(clone);
 						}
 						else if(bitMask[i] == '1')
 						{
-							address.add(addressEdit.substring(0, i) + '1' + addressEdit.substring(i + 1));
+							addressEdit[i] = '1';
+							address.add(addressEdit);
 						}
 						else
 						{
@@ -87,8 +91,8 @@ public class Day14 extends AOCPuzzle
 					}
 				}
 
-				for(String addr : address)
-					memory.put(addr, number);
+				for(char[] addr : address)
+					memory.put(new String(addr), number);
 			}
 		}
 
