@@ -18,6 +18,7 @@ public class AoC2020Core
 		//new Day12();
 		//new Day13();
 		//new Day14();
-		new Day15();
+		//new Day15();
+		new Day16();
 	}
 }
