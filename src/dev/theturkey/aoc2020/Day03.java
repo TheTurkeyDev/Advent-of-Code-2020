@@ -18,19 +18,17 @@ public class Day03 extends AOCPuzzle
 		{
 			String line = input.get(i);
 			char[] chars = line.toCharArray();
-			for(int j = 0; j < chars.length; j++)
-			{
-				map[i][j] = chars[j];
-			}
+			System.arraycopy(chars, 0, map[i], 0, chars.length);
 		}
 
-		long trees = getTreesHit(1, 1, map);
-		trees *= getTreesHit(3, 1, map);
+		long trees = getTreesHit(3, 1, map);
+		lap(trees);
+		trees *= getTreesHit(1, 1, map);
 		trees *= getTreesHit(5, 1, map);
 		trees *= getTreesHit(7, 1, map);
 		trees *= getTreesHit(1, 2, map);
 
-		System.out.println("Trees hit: " + trees);
+		lap(trees);
 	}
 
 	public int getTreesHit(int slopeX, int slopeY, char[][] map)

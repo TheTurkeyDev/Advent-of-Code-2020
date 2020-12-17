@@ -14,7 +14,8 @@ public class Day04 extends AOCPuzzle
 	@Override
 	void solve(List<String> input)
 	{
-		int validPassports = 0;
+		int validPassports1 = 0;
+		int validPassports2 = 0;
 
 		Map<String, String> keyValues = new HashMap<>();
 
@@ -22,38 +23,42 @@ public class Day04 extends AOCPuzzle
 		{
 			if(s.isEmpty())
 			{
-				boolean valid = true;
+				boolean valid1 = true;
+				boolean valid2 = true;
 				if(keyValues.containsKey("byr"))
 				{
 					int year = Integer.parseInt(keyValues.get("byr"));
 					if(year < 1920 || year > 2002)
-						valid = false;
+						valid2 = false;
 				}
 				else
 				{
-					valid = false;
+					valid1 = false;
+					valid2 = false;
 				}
 
 				if(keyValues.containsKey("iyr"))
 				{
 					int year = Integer.parseInt(keyValues.get("iyr"));
 					if(year < 2010 || year > 2020)
-						valid = false;
+						valid2 = false;
 				}
 				else
 				{
-					valid = false;
+					valid1 = false;
+					valid2 = false;
 				}
 
 				if(keyValues.containsKey("eyr"))
 				{
 					int year = Integer.parseInt(keyValues.get("eyr"));
 					if(year < 2020 || year > 2030)
-						valid = false;
+						valid2 = false;
 				}
 				else
 				{
-					valid = false;
+					valid1 = false;
+					valid2 = false;
 				}
 
 				if(keyValues.containsKey("hgt"))
@@ -63,58 +68,66 @@ public class Day04 extends AOCPuzzle
 					{
 						int heightIn = Integer.parseInt(height.replace("in", ""));
 						if(heightIn < 59 || heightIn > 76)
-							valid = false;
+							valid2 = false;
 					}
 					else if(height.endsWith("cm"))
 					{
 						int heightCm = Integer.parseInt(height.replace("cm", ""));
 						if(heightCm < 150 || heightCm > 193)
-							valid = false;
+							valid2 = false;
 					}
 					else
 					{
-						valid = false;
+						valid2 = false;
 					}
 				}
 				else
 				{
-					valid = false;
+					valid1 = false;
+					valid2 = false;
 				}
 
 				if(keyValues.containsKey("hcl"))
 				{
 					if(!keyValues.get("hcl").matches("#[a-f0-9]{6}"))
-						valid = false;
+						valid2 = false;
 				}
 				else
 				{
-					valid = false;
+					valid1 = false;
+					valid2 = false;
 				}
 
 				if(keyValues.containsKey("ecl"))
 				{
 					String color = keyValues.get("ecl");
 					if(!color.equals("amb") && !color.equals("blu") && !color.equals("brn") && !color.equals("gry") && !color.equals("grn") && !color.equals("hzl") && !color.equals("oth"))
-						valid = false;
+						valid2 = false;
 				}
 				else
 				{
-					valid = false;
+					valid1 = false;
+					valid2 = false;
 				}
 
 				if(keyValues.containsKey("pid"))
 				{
 					if(!keyValues.get("pid").matches("[0-9]{9}"))
-						valid = false;
+						valid2 = false;
 				}
 				else
 				{
-					valid = false;
+					valid1 = false;
+					valid2 = false;
 				}
 
-				if(valid)
+				if(valid1)
 				{
-					validPassports++;
+					validPassports1++;
+				}
+				if(valid2)
+				{
+					validPassports2++;
 				}
 				keyValues.clear();
 			}
@@ -129,6 +142,7 @@ public class Day04 extends AOCPuzzle
 			}
 		}
 
-		System.out.println("Valid Passports: " + validPassports);
+		lap(validPassports1);
+		lap(validPassports2);
 	}
 }

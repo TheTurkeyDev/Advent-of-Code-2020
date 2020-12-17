@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class AOCPuzzle
 {
@@ -68,12 +67,18 @@ public abstract class AOCPuzzle
 
 	public List<Integer> convertToInts(List<String> input)
 	{
-		return input.stream().mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+		List<Integer> ints = new ArrayList<>();
+		for(String s : input)
+			ints.add(Integer.parseInt(s));
+		return ints;
 	}
 
 	public List<Long> convertToLongs(List<String> input)
 	{
-		return input.stream().mapToLong(Long::parseLong).boxed().collect(Collectors.toList());
+		List<Long> ints = new ArrayList<>();
+		for(String s : input)
+			ints.add(Long.parseLong(s));
+		return ints;
 	}
 
 }

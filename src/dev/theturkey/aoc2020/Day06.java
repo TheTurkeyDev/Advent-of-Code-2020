@@ -57,6 +57,6 @@ public class Day06 extends AOCPuzzle
 
 		total += yesTo.size();
 
-		System.out.println("Part 2: " + total);
+		lap(total);
 	}
 }

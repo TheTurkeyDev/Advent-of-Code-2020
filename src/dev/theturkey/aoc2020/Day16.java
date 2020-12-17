@@ -96,8 +96,7 @@ public class Day16 extends AOCPuzzle
 				for(int k = 0; k < inputFields.size(); k++)
 				{
 					InputField inputField = inputFields.get(k);
-					if(!(inputField.min1 <= num && inputField.max1 >= num) && !(inputField.min2 <= num && inputField.max2 >= num))
-						possibleMatches[j][k] = false;
+					possibleMatches[j][k] = possibleMatches[j][k] && ((inputField.min1 <= num && inputField.max1 >= num) || (inputField.min2 <= num && inputField.max2 >= num));
 				}
 			}
 		}
