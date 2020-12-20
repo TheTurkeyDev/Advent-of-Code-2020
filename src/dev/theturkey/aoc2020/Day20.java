@@ -78,7 +78,6 @@ public class Day20 extends AOCPuzzle
 			}
 
 			int count = (top ? 0 : 1) + (bottom ? 0 : 1) + (left ? 0 : 1) + (right ? 0 : 1);
-			System.out.println(count);
 			if(count == 2)
 			{
 				answer *= td1.id;
@@ -86,7 +85,6 @@ public class Day20 extends AOCPuzzle
 			}
 		}
 
-		lap(t);
 		lap(answer);
 	}
 
