@@ -85,12 +85,12 @@ public class Day23 extends AOCPuzzle
 			CustomLinkedNode removed = currentCup.next;
 			currentCup.next = currentCup.next.next.next.next;
 
-			int destNumber = currentCup.value == 1 ? 9 : currentCup.value - 1;
+			int destNumber = currentCup.value == 1 ? cups.size() : currentCup.value - 1;
 			while(removed.value == destNumber || removed.next.value == destNumber || removed.next.next.value == destNumber)
 			{
 				destNumber--;
 				if(destNumber == 0)
-					destNumber = 9;
+					destNumber = cups.size();
 			}
 
 			CustomLinkedNode insertNode = cups.get(destNumber);
@@ -115,7 +115,6 @@ public class Day23 extends AOCPuzzle
 		{
 			long num1 = currentCup.next.value;
 			long num2 = currentCup.next.next.value;
-			System.out.println(num1 + " " + num2);
 			lap(num1 * num2);
 		}
 
