@@ -47,8 +47,8 @@ public class Day24 extends AOCPuzzle
 		lap(blackSideUpCount);
 
 		Map<Vect2I, Boolean> tilesCopy;
-		for(int y = -100; y < 100; y++)
-			for(int x = -100; x < 100; x++)
+		for(int y = -70; y < 70; y++)
+			for(int x = -70; x < 70; x++)
 				tiles.putIfAbsent(new Vect2I(x, y), true);
 
 		List<String> dirs = Arrays.asList("e", "w", "nw", "ne", "se", "sw");
